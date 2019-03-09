@@ -20,6 +20,10 @@ class TopicsController extends Controller
 	public function index(Request $request, Topic $topic)
     {
         $topics = $topic->withOrder($request->order)->paginate(20);
+        foreach ($topics as $key => $value) {
+            var_dump($value->user);
+        }
+        die;
         return view('topics.index', compact('topics'));
     }
 
